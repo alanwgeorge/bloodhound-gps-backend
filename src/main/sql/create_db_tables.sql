@@ -1,3 +1,10 @@
+-- Add this to your Tomcat context.xml
+--  <Resource name="jdbc/geofence" auth="Container" type="javax.sql.DataSource"
+--               maxActive="100" maxIdle="30" maxWait="10000"
+--               username="XXXXX" password="XXXXX" driverClassName="com.mysql.jdbc.Driver"
+--               url="jdbc:mysql://localhost:3306/geofence"/>
+
+
 create database if not exists geofence;
 
 CREATE USER 'geofence'@'localhost' IDENTIFIED BY 'geofence';
