@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller()
 @RequestMapping(value = "geofence")
 public class GeoFenceController {
-    private static final int DEFAULT_RADIUS = 100; //meters
+    private static final int DEFAULT_RADIUS = 500; //meters
 
     @Autowired
     private GeoFenceDao geoFenceDao;
