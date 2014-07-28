@@ -3,6 +3,7 @@ package com.alangeorge.web.bloodhound.controller;
 import com.alangeorge.web.bloodhound.model.GeoFence;
 import com.alangeorge.web.bloodhound.model.dao.GeoFenceDao;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller()
 @RequestMapping(value = "geofence")
 public class GeoFenceController {
+    private static final int DEFAULT_RADIUS = 100; //meters
 
     @Autowired
     private GeoFenceDao geoFenceDao;
@@ -53,7 +55,7 @@ public class GeoFenceController {
         geoFence.setDeviceId(currentPosition.deviceId);
         geoFence.setLatitude(currentPosition.getLatitude());
         geoFence.setLongitude(currentPosition.getLongitude());
-        geoFence.setRadius(1000);
+        geoFence.setRadius(DEFAULT_RADIUS);
 
         geoFenceDao.createGeoFence(geoFence);
 
@@ -61,6 +63,7 @@ public class GeoFenceController {
     }
 
     @SuppressWarnings("UnusedDeclaration")
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Position {
         private String deviceId;
         private float latitude;
@@ -107,41 +110,4 @@ public class GeoFenceController {
                     '}';
         }
     }
-
-//    @SuppressWarnings("UnusedDeclaration")
-//    public static class GeoFence {
-//        private Position position;
-//        private int radius;
-//
-//        public GeoFence() {  }
-//
-//        public GeoFence(Position position, int radius) {
-//            this.position = position;
-//            this.radius = radius;
-//        }
-//
-//        public Position getPosition() {
-//            return position;
-//        }
-//
-//        public void setPosition(Position position) {
-//            this.position = position;
-//        }
-//
-//        public int getRadius() {
-//            return radius;
-//        }
-//
-//        public void setRadius(int radius) {
-//            this.radius = radius;
-//        }
-//
-//        @Override
-//        public String toString() {
-//            return "GeoFence{" +
-//                    "position=" + position +
-//                    ", radius=" + radius +
-//                    '}';
-//        }
-//    }
 }
