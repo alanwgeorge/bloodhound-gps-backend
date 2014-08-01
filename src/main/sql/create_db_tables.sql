@@ -30,4 +30,17 @@ CREATE TABLE geofence (
  version int,
  primary key (id));
 
+drop table if exists location;
+
+CREATE TABLE location (
+ id int not null auto_increment,
+ device_id VARCHAR(255) not null,
+ latitude decimal(10, 8) not null,
+ longitude decimal(11, 8) not null,
+ accuracy int not null,
+ createtime timestamp not null,
+ version int,
+ primary key (id));
+
+
 show tables;
