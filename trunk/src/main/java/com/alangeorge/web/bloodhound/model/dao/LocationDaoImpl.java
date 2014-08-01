@@ -1,6 +1,6 @@
 package com.alangeorge.web.bloodhound.model.dao;
 
-import com.alangeorge.web.bloodhound.model.GeoFence;
+import com.alangeorge.web.bloodhound.model.Location;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,23 +13,23 @@ import javax.persistence.PersistenceContext;
 
 @Repository
 @Transactional
-public class GeoFenceDaoImpl implements GeoFenceDao {
+public class LocationDaoImpl implements LocationDao {
 
     @SuppressWarnings("UnusedDeclaration")
     @PersistenceContext
     private EntityManager em;
 
     @Override
-    public GeoFence createGeoFence(GeoFence geoFence) {
-        geoFence.setCreateTime(new Date());
+    public Location createLocation(Location location) {
+        location.setCreateTime(new Date());
 
-        em.persist(geoFence);
+        em.persist(location);
 
-        return geoFence;
+        return location;
     }
 
     @Override
-    public List<GeoFence> findByDeviceId() {
-        return em.createNamedQuery("GeoFence.findByDeviceId", GeoFence.class).getResultList();
+    public List<Location> findByDeviceId() {
+        return em.createNamedQuery("Location.findByDeviceId", Location.class).getResultList();
     }
 }
