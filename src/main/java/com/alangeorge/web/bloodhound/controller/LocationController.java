@@ -49,8 +49,7 @@ public class LocationController {
      */
     @SuppressWarnings("JavaDoc")
     @RequestMapping(value = "update", method = RequestMethod.POST)
-    public @ResponseBody
-    Map<String, String> update(@RequestBody Position currentPosition) {
+    public @ResponseBody Map<String, String> update(@RequestBody Position currentPosition) {
 
         Location location = new Location();
         location.setDeviceId(currentPosition.getDeviceId());
