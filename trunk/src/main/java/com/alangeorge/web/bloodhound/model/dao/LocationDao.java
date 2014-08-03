@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface LocationDao {
     public Location createLocation(Location location);
-    public List<Location> findByDeviceId();
+    public List<Location> findByDeviceId(String deviceId);
 }

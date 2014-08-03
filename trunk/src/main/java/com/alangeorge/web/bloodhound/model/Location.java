@@ -18,7 +18,7 @@ import javax.persistence.Version;
 @Entity
 @Table(name = "location")
 @NamedQueries({
-        @NamedQuery(name="Location.findByDeviceId", query = "select l from Location l where :deviceId = :deviceId")
+        @NamedQuery(name="Location.findByDeviceId", query = "select l from Location l where deviceId = :deviceId order by l.createTime desc")
 })
 
 public class Location {
@@ -101,6 +101,7 @@ public class Location {
     public void setVersion(int version) {
         this.version = version;
     }
+
 
     @Override
     public String toString() {

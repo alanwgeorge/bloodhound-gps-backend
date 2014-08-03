@@ -1,11 +1,10 @@
 package com.alangeorge.web.bloodhound.model.dao;
 
-import com.alangeorge.web.bloodhound.model.Location;
+import com.alangeorge.web.bloodhound.model.Device;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,27 +13,21 @@ import javax.persistence.TypedQuery;
 
 @Repository
 @Transactional
-public class LocationDaoImpl implements LocationDao {
-
+public class DeviceDaoImpl implements DeviceDao {
     @SuppressWarnings("UnusedDeclaration")
     @PersistenceContext
     private EntityManager em;
 
     @Override
-    public Location createLocation(Location location) {
-        location.setCreateTime(new Date());
-
-        em.persist(location);
-
-        return location;
+    public List<Device> findAll() {
+        return em.createNamedQuery("Device.findAll", Device.class).getResultList();
     }
 
-    @Override
-    public List<Location> findByDeviceId(String deviceId) {
-        TypedQuery<Location> query = em.createNamedQuery("Location.findByDeviceId", Location.class);
+    public Device findById(String deviceId) {
+        TypedQuery<Device> query = em.createNamedQuery("Device.findById", Device.class);
 
         query.setParameter("deviceId", deviceId);
 
-        return query.getResultList();
+        return query.getSingleResult();
     }
 }
