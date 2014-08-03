@@ -2,7 +2,7 @@
 --  <Resource name="jdbc/geofence" auth="Container" type="javax.sql.DataSource"
 --               maxActive="100" maxIdle="30" maxWait="10000"
 --               username="XXXXX" password="XXXXX" driverClassName="com.mysql.jdbc.Driver"
---               url="jdbc:mysql://localhost:3306/geofence"/>
+--               url="jdbc:mysql://localhost:3306/geofence?autoReconnect=true"/>
 
 
 create database if not exists geofence;
