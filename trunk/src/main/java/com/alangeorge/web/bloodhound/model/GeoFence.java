@@ -43,6 +43,14 @@ public class GeoFence {
     private Date createTime;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "entertime", unique = false, nullable = true)
+    private Date enterTime;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dwelltime", unique = false, nullable = true)
+    private Date dwellTime;
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "exittime", unique = false, nullable = true)
     private Date exitTime;
 
@@ -97,6 +105,22 @@ public class GeoFence {
         this.createTime = createTime;
     }
 
+    public Date getEnterTime() {
+        return enterTime;
+    }
+
+    public void setEnterTime(Date enterTime) {
+        this.enterTime = enterTime;
+    }
+
+    public Date getDwellTime() {
+        return dwellTime;
+    }
+
+    public void setDwellTime(Date dwellTime) {
+        this.dwellTime = dwellTime;
+    }
+
     public Date getExitTime() {
         return exitTime;
     }
@@ -122,6 +146,8 @@ public class GeoFence {
                 ", longitude=" + longitude +
                 ", radius=" + radius +
                 ", createTime=" + createTime +
+                ", enterTime=" + enterTime +
+                ", dwellTime=" + dwellTime +
                 ", exitTime=" + exitTime +
                 ", version=" + version +
                 '}';

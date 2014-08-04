@@ -6,11 +6,6 @@
 <ul>
 	<c:forEach items="${devices}" var="device">
        <li><a href="${device.deviceId}"><c:out value="${device.name}"/></a></li>
-       <!--
-       <c:forEach items="${device.locations}" var="location">
-          <c:out value="${location}"/><p>
-       </c:forEach>
-       -->
 	</c:forEach>
 </ul>
 </body>

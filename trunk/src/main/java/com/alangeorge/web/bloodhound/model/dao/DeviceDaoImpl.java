@@ -24,10 +24,6 @@ public class DeviceDaoImpl implements DeviceDao {
     }
 
     public Device findById(String deviceId) {
-        TypedQuery<Device> query = em.createNamedQuery("Device.findById", Device.class);
-
-        query.setParameter("deviceId", deviceId);
-
-        return query.getSingleResult();
+        return em.find(Device.class, deviceId);
     }
 }
