@@ -2,6 +2,8 @@ package com.alangeorge.web.bloodhound.controller;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import java.util.Date;
+
 @SuppressWarnings("UnusedDeclaration")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Position {
@@ -9,7 +11,7 @@ public class Position {
     private float latitude;
     private float longitude;
     private float accuracy;
-
+    private Date createTime;
 
     public Position() {  }
 
@@ -50,6 +52,14 @@ public class Position {
         this.accuracy = accuracy;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
     @Override
     public String toString() {
         return "Position{" +
@@ -57,6 +67,7 @@ public class Position {
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
                 ", accuracy=" + accuracy +
+                ", createTime=" + createTime +
                 '}';
     }
 }

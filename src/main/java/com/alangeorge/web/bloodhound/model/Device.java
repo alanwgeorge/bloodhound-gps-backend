@@ -16,8 +16,7 @@ import javax.persistence.Version;
 @Entity
 @Table(name = "device")
 @NamedQueries({
-        @NamedQuery(name="Device.findAll", query = "select d from Device d"),
-        @NamedQuery(name="Device.findById", query = "select d from Device d where deviceId = :deviceId")
+        @NamedQuery(name="Device.findAll", query = "select d from Device d")
 })
 public class Device {
     @Id // @Id indicates that this it a unique primary key
@@ -26,9 +25,6 @@ public class Device {
 
     @Column(name = "name", length = 255, unique = false, nullable = false)
     private String name;
-
-    @OneToMany(mappedBy = "deviceId", fetch = FetchType.EAGER)
-    private Collection<Location> locations;
 
     @Version
     private int version;
@@ -55,14 +51,6 @@ public class Device {
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    public Collection<Location> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(Collection<Location> locations) {
-        this.locations = locations;
     }
 
     @Override

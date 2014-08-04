@@ -25,8 +25,10 @@ CREATE TABLE geofence (
  latitude decimal(10, 8) not null,
  longitude decimal(11, 8) not null,
  radius int not null,
- createtime timestamp not null,
- exittime timestamp,
+ createtime timestamp null default 0,
+ entertime timestamp null default 0,
+ dwelltime timestamp null default 0,
+ exittime timestamp null default 0,
  version int,
  primary key (id));
 
