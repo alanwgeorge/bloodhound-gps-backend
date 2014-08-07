@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 @Repository
@@ -36,5 +37,30 @@ public class LocationDaoImpl implements LocationDao {
         query.setParameter("deviceId", deviceId);
 
         return query.getResultList();
+    }
+
+    @Override
+    public List<Location> findByDeviceIdPagination(String deviceId, int page, int pageSize) {
+        TypedQuery<Location> query = em.createNamedQuery("Location.findByDeviceId", Location.class);
+        query.setFirstResult((page-1) * pageSize);
+        query.setMaxResults(pageSize);
+        query.setParameter("deviceId", deviceId);
+
+        return query.getResultList();
+    }
+
+    @Override
+    public Number countTotal() {
+        Query query = em.createQuery("SELECT COUNT (l.id) FROM Location l");
+        return (Number) query.getSingleResult();
+    }
+
+    @Override
+    public Number count(String deviceId) {
+        TypedQuery<Number> query = em.createNamedQuery("Location.countByDeviceId", Number.class);
+
+        query.setParameter("deviceId", deviceId);
+
+        return query.getSingleResult();
     }
 }

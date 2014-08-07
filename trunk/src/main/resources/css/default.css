@@ -1,0 +1,25 @@
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+   border: 1px solid black;
+}
+
+td {
+    text-align: right;
+    padding: 2px;
+}
+
+td.latitude, td.longitude {
+    text-align: left;
+}
+
+td.link {
+    text-align: center;
+}
+
+caption {
+    text-align: left;
+}
