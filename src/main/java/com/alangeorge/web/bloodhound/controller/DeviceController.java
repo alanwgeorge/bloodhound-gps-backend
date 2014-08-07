@@ -34,18 +34,32 @@ public class DeviceController {
         return new ModelAndView("devices", "devices", devices);
     }
 
-    @RequestMapping(value="/{deviceId}")
-    public ModelAndView device(@PathVariable String deviceId, HttpServletRequest request) {
+    @RequestMapping(value="/{deviceId}/{pageSize}/{page}")
+    public ModelAndView device(@PathVariable String deviceId, @PathVariable int pageSize, @PathVariable int page, HttpServletRequest request) {
 
         ModelAndView model = new ModelAndView("locations");
 
-        List<Location> locations = locationDao.findByDeviceId(deviceId);
+        List<Location> locations = locationDao.findByDeviceIdPagination(deviceId, page, pageSize);
         Device device = deviceDao.findById(deviceId);
+        Number count = locationDao.count(deviceId);
+
+        float numberOfPages = (float) count.intValue() / pageSize;
+        int numberOfPagesRounded;
+        if ((int) numberOfPages == numberOfPages) {
+            numberOfPagesRounded = (int) numberOfPages;
+        } else {
+            numberOfPagesRounded = (int) numberOfPages;
+            numberOfPagesRounded++;
+        }
 
         model.addObject("locations", locations);
         model.addObject("device", device);
+        model.addObject("count", count.longValue());
+        model.addObject("pageSize", pageSize);
+        model.addObject("page", page);
+        model.addObject("numberOfPages", numberOfPagesRounded);
+
 
         return model;
     }
-
 }

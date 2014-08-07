@@ -18,7 +18,8 @@ import javax.persistence.Version;
 @Entity
 @Table(name = "location")
 @NamedQueries({
-        @NamedQuery(name="Location.findByDeviceId", query = "select l from Location l where deviceId = :deviceId order by l.createTime desc")
+        @NamedQuery(name="Location.findByDeviceId", query = "select l from Location l where deviceId = :deviceId order by l.createTime desc, l.id desc"),
+        @NamedQuery(name="Location.countByDeviceId", query = "select count(l.id) from Location l where deviceId = :deviceId")
 })
 
 public class Location {
