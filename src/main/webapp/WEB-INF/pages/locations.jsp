@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head lang="en">
 <link href="${pageContext.request.contextPath}/resources/css/default.css" rel="stylesheet" type="text/css">
@@ -24,6 +25,7 @@
   <th>Latitude</th>
   <th>Longitude</th>
   <th>Accuracy</th>
+  <th>Distance</br>(Miles)</th>
   <th>Date and Time</th>
   <th>Map Link</th>
   </tr>
@@ -35,6 +37,7 @@
        <td class="latitude"><c:out value="${location.latitude}"/></td>
        <td class="longitude"><c:out value="${location.longitude}"/></td>
        <td class="accuracy"><c:out value="${location.accuracy}"/></td>
+       <td class="distance"><fmt:formatNumber type="number" maxFractionDigits="3" value="${distances[location.id]}"/></td>
        <td class="datetime"><c:out value="${location.createTime}"/></td>
        <td class="link"><a href="http://maps.google.com/?q=${location.latitude},${location.longitude}">Map</a></td>
    </tr
