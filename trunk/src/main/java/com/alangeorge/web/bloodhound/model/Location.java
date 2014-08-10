@@ -14,6 +14,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import static com.alangeorge.web.bloodhound.model.DistanceUnit.*;
+
 @SuppressWarnings("UnusedDeclaration")
 @Entity
 @Table(name = "location")
@@ -103,6 +105,35 @@ public class Location {
         this.version = version;
     }
 
+    public double distanceFrom(Location location, DistanceUnit distanceUnit) {
+        return distance(this.getLatitude(), this.getLongitude(), location.getLatitude(), location.getLongitude(), distanceUnit);
+    }
+
+    private double distance(double lat1, double lon1, double lat2, double lon2, DistanceUnit distanceUnit) {
+        if (lat1 == lat2 && lon1 == lon2) {
+            return 0;
+        }
+
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        if (distanceUnit == KILOMETER) {
+            dist = dist * 1.609344;
+        } else if (distanceUnit == NAUTICAL_MILES) {
+            dist = dist * 0.8684;
+        }
+        return (dist);
+    }
+
+    private double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    private double rad2deg(double rad) {
+        return (rad * 180.0 / Math.PI);
+    }
 
     @Override
     public String toString() {
