@@ -11,6 +11,7 @@
   <caption>
   Device: <c:out value="${device.name}"/></br>
   Count: <c:out value="${count}"/></br>
+    Current Page: <c:out value="${page}"/></br>
   <span class="pageNumbers">
     Goto Page:
     <c:forEach begin="1" end="${numberOfPages}" varStatus="page">
@@ -38,7 +39,7 @@
        <td class="longitude"><c:out value="${location.longitude}"/></td>
        <td class="accuracy"><c:out value="${location.accuracy}"/></td>
        <td class="distance"><fmt:formatNumber type="number" maxFractionDigits="3" value="${distances[location.id]}"/></td>
-       <td class="datetime"><c:out value="${location.createTime}"/></td>
+       <td class="datetime"><fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${location.createTime}" />
        <td class="link"><a href="http://maps.google.com/?q=${location.latitude},${location.longitude}">Map</a></td>
    </tr
 	</c:forEach>
