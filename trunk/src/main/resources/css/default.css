@@ -1,60 +1,44 @@
+/* Palette URL: http://paletton.com/#uid=1330u0k3AJT03+a1cTD73yObOs7 */
 
 /* As hex codes */
-
-.color-primary-0 { color: #AAA039 }	/* Main Primary color */
-.color-primary-1 { color: #FFF7AA }
-.color-primary-2 { color: #D4CB6A }
-.color-primary-3 { color: #807615 }
-.color-primary-4 { color: #554D00 }
-
-
+.color-primary-0 { color: #BCD4CA }	/* Main Primary color */
+.color-primary-1 { color: #FDFDFD }
+.color-primary-2 { color: #E4EDE9 }
+.color-primary-3 { color: #8EB6A5 }
+.color-primary-4 { color: #619A81 }
 
 /* As RGBa codes */
+.rgba-primary-0 { color: rgba(188,212,202,1) }	/* Main Primary color */
+.rgba-primary-1 { color: rgba(253,253,253,1) }
+.rgba-primary-2 { color: rgba(228,237,233,1) }
+.rgba-primary-3 { color: rgba(142,182,165,1) }
+.rgba-primary-4 { color: rgba( 97,154,129,1) }
 
-.rgba-primary-0 { color: rgba(170,160, 57,1) }	/* Main Primary color */
-.rgba-primary-1 { color: rgba(255,247,170,1) }
-.rgba-primary-2 { color: rgba(212,203,106,1) }
-.rgba-primary-3 { color: rgba(128,118, 21,1) }
-.rgba-primary-4 { color: rgba( 85, 77,  0,1) }
-
-
+$color-primary-0='#BCD4CA';
+$color-primary-1='#FDFDFD';
+$color-primary-2='#E4EDE9';
+$color-primary-3='#8EB6A5';
+$color-primary-4='#619A81';
 
 body {
-    font-family: verdana,arial,sans-serif;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     font-size: 11px;
-    color:  #554d00;
-    background: #D4CB6A
 }
-
 
 table {
     border-collapse: collapse;
-    border-color: gray;
-}
-
-table,a {
-    color: #554d00;
-}
-
-th {
-   background: #554d00;
-   color: #fff7aa;
-/*   background: linear-gradient(to bottom, #d5e3e4 0%,#ccdee0 40%,#b3c8cc 100%); */
 }
 
 tr, td {
-    border: 1px solid black;
-    color: #554d00;
+    border: 1px solid #619A81
 }
 
 tr:nth-child(even) {
-/*    background: #807615; */
-    background: #fff7aa;
-/*    background: linear-gradient(to bottom, #ebecda 0%,#e0e0c6 40%,#ceceb7 100%); */
+    background: #8EB6A5;
 }
+
 tr:nth-child(odd) {
-    background: #d4cb6a;
-    /*    background: linear-gradient(to bottom, #ebecda 0%,#e0e0c6 40%,#ceceb7 100%); */
+    background: #BCD4CA;
 }
 
 td.latitude, td.longitude {
